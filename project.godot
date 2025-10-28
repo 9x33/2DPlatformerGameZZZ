@@ -12,4 +12,22 @@ config_version=5
 
 config/name="Zech_2D_Platformer"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "red",
+"res://Scenes/": "yellow",
+"res://Scripts/": "green"
+}
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+textures/decals/filter=0
+textures/light_projectors/filter=0
