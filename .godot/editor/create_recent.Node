@@ -1,7 +1,7 @@
+TileMapLayer
+TileMap
 CollisionShape2D
 StaticBody2D
 AnimationPlayer
 Sprite2D
 CharacterBody2D
-TileMapLayer
-TileMap
