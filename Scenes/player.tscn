@@ -50,8 +50,23 @@
 [ext_resource type="Texture2D" uid="uid://m2k3pd4ciddj" path="res://Assets/BlueWizard/2BlueWizardJump/CharaWizardJump_00007.png" id="48_mpfyg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
-radius = 58.0
-height = 270.0
+radius = 4.0
+height = 20.0
+
+[sub_resource type="Animation" id="Animation_b88wv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_5x828")]
+}
 
 [sub_resource type="Animation" id="Animation_khis8"]
 resource_name = "idle"
@@ -71,8 +86,10 @@ tracks/0/keys = {
 "values": [ExtResource("2_5x828"), ExtResource("3_c1k8q"), ExtResource("4_e6mvm"), ExtResource("5_57lvd"), ExtResource("6_ie7r7"), ExtResource("7_vq3lt"), ExtResource("8_pukcj"), ExtResource("9_1htnp"), ExtResource("10_m376e"), ExtResource("11_6b312"), ExtResource("12_lisdf"), ExtResource("13_n1x1j"), ExtResource("14_c8b32"), ExtResource("15_nj1g2"), ExtResource("16_usbl8"), ExtResource("17_dtg1u"), ExtResource("17_dtg1u"), ExtResource("18_nuaet"), ExtResource("19_bqbau"), ExtResource("20_f5f5t")]
 }
 
-[sub_resource type="Animation" id="Animation_b88wv"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_ee2o4"]
+resource_name = "jump"
+length = 0.7
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -80,10 +97,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("2_5x828")]
+"values": [ExtResource("41_4grkl"), ExtResource("42_6yrdb"), ExtResource("43_ue0p1"), ExtResource("44_isbcs"), ExtResource("45_142e3"), ExtResource("46_ts2c8"), ExtResource("47_hcgbs"), ExtResource("48_mpfyg")]
 }
 
 [sub_resource type="Animation" id="Animation_ym00c"]
@@ -104,23 +121,6 @@ tracks/0/keys = {
 "values": [ExtResource("21_qvbpb"), ExtResource("22_sscpr"), ExtResource("23_by7i4"), ExtResource("24_3uvy8"), ExtResource("25_ss172"), ExtResource("26_jmelf"), ExtResource("27_bjdqd"), ExtResource("28_feq18"), ExtResource("29_wcnj3"), ExtResource("30_jsob3"), ExtResource("31_pg0gw"), ExtResource("32_qavoy"), ExtResource("33_w4w4b"), ExtResource("34_h5cax"), ExtResource("35_dj0x0"), ExtResource("36_f1uaf"), ExtResource("37_6hq81"), ExtResource("38_5cld6"), ExtResource("39_o736f"), ExtResource("40_ketbw")]
 }
 
-[sub_resource type="Animation" id="Animation_ee2o4"]
-resource_name = "jump"
-length = 0.7
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("41_4grkl"), ExtResource("42_6yrdb"), ExtResource("43_ue0p1"), ExtResource("44_isbcs"), ExtResource("45_142e3"), ExtResource("46_ts2c8"), ExtResource("47_hcgbs"), ExtResource("48_mpfyg")]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pgbbb"]
 _data = {
 &"RESET": SubResource("Animation_b88wv"),
@@ -133,11 +133,10 @@ _data = {
 script = ExtResource("1_8eeqe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(9, -6)
+scale = Vector2(0.07, 0.07)
 texture = ExtResource("2_5x828")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 12)
 shape = SubResource("CapsuleShape2D_onrkg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

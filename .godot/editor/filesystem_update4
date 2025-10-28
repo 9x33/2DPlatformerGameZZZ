@@ -1,5 +1,2 @@
 res://Scenes/Areass/first_area.tscn
-res://player.tscn
 res://Scenes/player.tscn
-res://Scenes/fase.tscn
-res://Scripts/player.gd

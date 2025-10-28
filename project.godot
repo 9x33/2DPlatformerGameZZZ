@@ -11,11 +11,14 @@ config_version=5
 [application]
 
 config/name="Zech_2D_Platformer"
-run/main_scene="uid://clclm1qmxac5t"
+run/main_scene="uid://b0b628cqq5lxf"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
 [display]
 
+window/size/viewport_width=288
+window/size/viewport_height=180
+window/size/mode=2
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
