@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://c7tll4jxq66u6"]
+[gd_scene load_steps=62 format=3 uid="uid://c7tll4jxq66u6"]
 
 [ext_resource type="Script" uid="uid://4jt84tcw6ywx" path="res://Scripts/player.gd" id="1_8eeqe"]
 [ext_resource type="Texture2D" uid="uid://btlm5tol43btv" path="res://Assets/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00000.png" id="2_5x828"]
@@ -48,10 +48,14 @@
 [ext_resource type="Texture2D" uid="uid://b46dy20tg1bm8" path="res://Assets/BlueWizard/2BlueWizardJump/CharaWizardJump_00005.png" id="46_ts2c8"]
 [ext_resource type="Texture2D" uid="uid://bu32mk7mo4ob8" path="res://Assets/BlueWizard/2BlueWizardJump/CharaWizardJump_00006.png" id="47_hcgbs"]
 [ext_resource type="Texture2D" uid="uid://m2k3pd4ciddj" path="res://Assets/BlueWizard/2BlueWizardJump/CharaWizardJump_00007.png" id="48_mpfyg"]
+[ext_resource type="Texture2D" uid="uid://b47w15y1jhooe" path="res://Assets/Attack_FX/NPT100.png" id="49_57lvd"]
+[ext_resource type="Texture2D" uid="uid://bu1txrqb2frn6" path="res://Assets/Attack_FX/NPT101.png" id="50_ie7r7"]
+[ext_resource type="Texture2D" uid="uid://l6phl7ecuyqd" path="res://Assets/Attack_FX/NPT102.png" id="51_vq3lt"]
+[ext_resource type="Texture2D" uid="uid://7ibhwqa50hds" path="res://Assets/Attack_FX/NPT103.png" id="52_pukcj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
 radius = 4.0
-height = 20.0
+height = 18.0
 
 [sub_resource type="Animation" id="Animation_b88wv"]
 length = 0.001
@@ -129,11 +133,48 @@ _data = {
 &"run": SubResource("Animation_ym00c")
 }
 
+[sub_resource type="Animation" id="Animation_1htnp"]
+resource_name = "Attack"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.03333334, 0, 0.06666667, 0.13333334, 0.23333333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_5x828"), ExtResource("49_57lvd"), ExtResource("50_ie7r7"), ExtResource("51_vq3lt"), ExtResource("51_vq3lt"), ExtResource("52_pukcj")]
+}
+
+[sub_resource type="Animation" id="Animation_m376e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_5x828")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6b312"]
+_data = {
+&"Attack": SubResource("Animation_1htnp"),
+&"RESET": SubResource("Animation_m376e")
+}
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_8eeqe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.07, 0.07)
+scale = Vector2(0.06, 0.06)
 texture = ExtResource("2_5x828")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -142,4 +183,9 @@ shape = SubResource("CapsuleShape2D_onrkg")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_pgbbb")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6b312")
 }

@@ -1,2 +1,2 @@
-res://Scenes/Areass/first_area.tscn
 res://Scenes/player.tscn
+res://Scripts/player.gd
